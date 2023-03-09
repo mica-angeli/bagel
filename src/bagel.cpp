@@ -21,18 +21,14 @@ Bagel::Bagel(int argc, const char *const *argv) {
     std::exit(1);
   }
 
-  if(parser.is_subcommand_used("duration"))
-  {
+  if(parser.is_subcommand_used("duration")) {
     durationCommand(duration_command.get<std::string>("bag"));
   }
 
-  
 }
 
 void Bagel::durationCommand(const std::string& bag_path) {
-  rosbag::Bag bag;
-
-  bag.open(bag_path, rosbag::bagmode::Read);
+  rosbag::Bag bag(bag_path, rosbag::bagmode::Read);
 
   rosbag::View view(bag);
 
@@ -40,6 +36,5 @@ void Bagel::durationCommand(const std::string& bag_path) {
   ros::Time bag_end_time = view.getEndTime();
 
   std::cout << (bag_end_time - bag_start_time).toSec() << std::endl;
-  bag.close();
 }
 } // namespace bagel

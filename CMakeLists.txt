@@ -115,7 +115,7 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+  include
   ${catkin_INCLUDE_DIRS}
 )
 
@@ -139,6 +139,8 @@ add_executable(${PROJECT_NAME}_node src/bagel_node.cpp)
 ## target back to the shorter version for ease of user use
 ## e.g. "rosrun someones_pkg node" instead of "rosrun someones_pkg someones_pkg_node"
 set_target_properties(${PROJECT_NAME}_node PROPERTIES OUTPUT_NAME node PREFIX "")
+
+target_compile_features(${PROJECT_NAME}_node PRIVATE cxx_std_17)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above

@@ -7,6 +7,8 @@
 #include <argparse/argparse.hpp>
 #include <rosbag/bag.h>
 #include <rosbag/view.h>
+#include <rosbag/player.h>
+#include <ros/ros.h>
 
 namespace bagel {
 class Bagel {
@@ -15,6 +17,8 @@ public:
 
 private:
   void infoCommand(const std::string& bag_path);
+
+  void playCommand(const std::string& bag_path);
 }; // class Bagel
 } // namespace bagel
 

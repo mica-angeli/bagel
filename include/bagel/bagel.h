@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include <vector>
 #include <argparse/argparse.hpp>
 #include <rosbag/bag.h>
 #include <rosbag/view.h>
@@ -13,7 +14,7 @@ public:
   Bagel(int argc, const char *const *argv);
 
 private:
-  void durationCommand(const std::string& bag_path);
+  void infoCommand(const std::string& bag_path);
 }; // class Bagel
 } // namespace bagel
 

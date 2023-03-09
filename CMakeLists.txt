@@ -10,6 +10,7 @@ add_compile_options(-std=c++11)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
+  rosbag
 )
 
 ## System dependencies are found with CMake's conventions
@@ -104,7 +105,10 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES bagel
-#  CATKIN_DEPENDS roscpp std_msgs
+ CATKIN_DEPENDS
+  roscpp
+  std_msgs
+  rosbag
 #  DEPENDS system_lib
 )
 
@@ -144,12 +148,12 @@ target_compile_features(${PROJECT_NAME}_node PRIVATE cxx_std_17)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-# add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(${PROJECT_NAME}_node
-#   ${catkin_LIBRARIES}
-# )
+target_link_libraries(${PROJECT_NAME}_node
+  ${catkin_LIBRARIES}
+)
 
 #############
 ## Install ##
